@@ -33,13 +33,14 @@ function addCheckBoxListener() {
 
 document.getElementById("add-task-button").addEventListener("click", function () {
    let newTask = document.getElementById("input-task").value;
-   document.getElementById("input-task").value = "";
+   if (newTask === "") return;
 
    const task = '<li>' +
        '<input type="checkbox" class="check">' +
        '<span class="task">' + newTask + '</span>' +
        '<button class="delete-btn">X</button>' +
        '</li>';
+   document.getElementById("input-task").value = "";
 
    document.getElementById("task-list").insertAdjacentHTML('afterbegin', task);
    addCheckBoxListener();
@@ -49,9 +50,48 @@ document.getElementById("add-task-button").addEventListener("click", function ()
 
 function saveTasks() {
    localStorage.setItem("tasks", document.getElementById("task-list").innerHTML);
-   localStorage.setItem("checkboxes", document.getElementById())
 }
 
 function loadTasks() {
-   document.getElementById("task-list").insertAdjacentHTML('afterbegin', localStorage.getItem("tasks"));
+   let tasksList = localStorage.getItem('tasks');
+
+   if (tasksList != null) {
+      document.getElementById("task-list")
+          .insertAdjacentHTML('afterbegin', localStorage.getItem("tasks"));
+   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
